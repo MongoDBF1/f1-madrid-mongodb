@@ -1,0 +1,753 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Know Before You Go — MongoDB Executive Experience, F1 Grand Prix Madrid</title>
+<meta name="description" content="Everything MongoDB guests need before the Executive Experience at the Formula 1 Grand Prix Madrid, September 12–13, 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --forest:#001E2B;
+    --forest-2:#04313F;
+    --spring:#00ED64;
+    --spring-deep:#00684A;
+    --paper:#FFFFFF;
+    --mist:#F4F8F7;
+    --line:#D9E2E1;
+    --ink:#0A1F2B;
+    --muted:#4C5F65;
+    --radius:14px;
+    --maxw:720px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
+  }
+  body{
+    margin:0;
+    font-family:'IBM Plex Sans', system-ui, -apple-system, sans-serif;
+    color:var(--ink);
+    background:var(--paper);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Space Grotesk', system-ui, sans-serif;
+    font-weight:600;
+    letter-spacing:-0.01em;
+    color:var(--ink);
+    margin:0;
+  }
+  a{color:var(--spring-deep);}
+  a:focus-visible, button:focus-visible, summary:focus-visible, details:focus-within summary{
+    outline:3px solid var(--spring);
+    outline-offset:2px;
+    border-radius:4px;
+  }
+  .skip-link{
+    position:absolute; left:-9999px; top:auto;
+    background:var(--spring); color:var(--forest); font-weight:600;
+    padding:12px 18px; border-radius:8px; z-index:100;
+  }
+  .skip-link:focus{left:12px; top:12px;}
+
+  /* Header */
+  header.site{
+    background:var(--forest);
+    color:#fff;
+    position:sticky; top:0; z-index:40;
+    border-bottom:1px solid rgba(255,255,255,0.08);
+  }
+  .bar{
+    max-width:var(--maxw); margin:0 auto; padding:12px 20px;
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+  }
+  .wordmark{display:flex; align-items:center; gap:8px; text-decoration:none; color:#fff;}
+  .wordmark svg{width:20px;height:20px;flex:none;}
+  .wordmark span{font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.05rem; letter-spacing:-0.01em;}
+  .lang-group{display:flex; gap:6px; background:rgba(255,255,255,0.08); padding:4px; border-radius:10px;}
+  .lang-btn{
+    font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:0.85rem;
+    background:transparent; border:none; color:#C7D3D6; padding:8px 12px;
+    border-radius:7px; cursor:pointer; min-height:36px;
+  }
+  .lang-btn[aria-pressed="true"]{background:var(--spring); color:var(--forest);}
+
+  /* Chip nav */
+  nav.jump{
+    max-width:var(--maxw); margin:0 auto;
+    padding:10px 20px 14px;
+    display:flex; gap:8px; overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+  }
+  nav.jump::-webkit-scrollbar{display:none;}
+  nav.jump a{
+    flex:none; text-decoration:none; font-size:0.85rem; font-weight:500;
+    color:#DCE7E6; background:rgba(255,255,255,0.06);
+    padding:8px 14px; border-radius:20px; border:1px solid rgba(255,255,255,0.14);
+    white-space:nowrap;
+  }
+  nav.jump a:hover{background:rgba(255,255,255,0.14);}
+
+  /* Hero */
+  .hero{background:linear-gradient(180deg, var(--forest) 0%, var(--forest-2) 100%); color:#fff;}
+  .hero-inner{max-width:var(--maxw); margin:0 auto; padding:8px 20px 40px;}
+  .hero h1{font-size:clamp(1.6rem, 5vw, 2.3rem); line-height:1.15; max-width:20ch;}
+  .hero p.lede{color:#B9C8CA; margin-top:10px; font-size:1.02rem; max-width:42ch;}
+  .date-block{
+    margin-top:26px; display:flex; align-items:flex-end; gap:16px; flex-wrap:wrap;
+  }
+  .date-digits{
+    font-family:'Space Grotesk',sans-serif; font-weight:700; color:var(--spring);
+    font-size:clamp(2.6rem,10vw,3.6rem); line-height:1; font-variant-numeric:tabular-nums;
+  }
+  .date-meta{color:#DCE7E6; font-size:0.95rem;}
+  .date-meta strong{display:block; color:#fff; font-weight:600;}
+
+  main{max-width:var(--maxw); margin:0 auto; padding:28px 20px 60px;}
+
+  .toolbar{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    margin-bottom:18px; flex-wrap:wrap;
+  }
+  .toolbar p{margin:0; color:var(--muted); font-size:0.9rem;}
+  .toggle-all{
+    font-size:0.85rem; font-weight:600; color:var(--spring-deep);
+    background:var(--mist); border:1px solid var(--line); border-radius:8px;
+    padding:9px 14px; cursor:pointer; min-height:40px;
+  }
+  .toggle-all:hover{background:#EAF6F1;}
+
+  /* Accordion sections */
+  details.card{
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-left:4px solid var(--spring-deep);
+    border-radius:var(--radius);
+    margin-bottom:12px;
+    overflow:hidden;
+    scroll-margin-top:130px;
+  }
+  details.card[open]{border-left-color:var(--spring);}
+  details.card.flash{animation:flash 1.6s ease;}
+  @keyframes flash{
+    0%{background:#EAFBF1;} 100%{background:var(--paper);}
+  }
+  summary.head{
+    list-style:none; cursor:pointer; padding:16px 16px;
+    display:flex; align-items:center; gap:12px; min-height:44px;
+  }
+  summary.head::-webkit-details-marker{display:none;}
+  summary.head .chevron{
+    flex:none; width:22px; height:22px; color:var(--spring-deep);
+    transition:transform 0.2s ease;
+  }
+  details.card[open] summary.head .chevron{transform:rotate(90deg);}
+  summary.head .title{flex:1; font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:1.05rem;}
+  summary.head .title small{display:block; font-family:'IBM Plex Sans',sans-serif; font-weight:400; color:var(--muted); font-size:0.82rem; margin-top:2px;}
+  .copy-btn{
+    flex:none; width:36px; height:36px; border-radius:8px; border:1px solid var(--line);
+    background:var(--mist); color:var(--muted); display:flex; align-items:center; justify-content:center;
+    cursor:pointer;
+  }
+  .copy-btn:hover{background:#EAF6F1; color:var(--spring-deep);}
+  .copy-btn svg{width:16px;height:16px;}
+  .body{padding:0 18px 20px 50px;}
+  .body > *:first-child{margin-top:0;}
+  .body p{margin:0 0 12px;}
+  .body ul, .body ol{margin:0 0 14px; padding-left:1.2em;}
+  .body li{margin-bottom:6px;}
+
+  dl.facts{display:grid; grid-template-columns:auto 1fr; gap:8px 16px; margin:0 0 14px;}
+  dl.facts dt{font-weight:600; color:var(--muted); font-size:0.9rem;}
+  dl.facts dd{margin:0;}
+
+  .callout{
+    background:var(--mist); border:1px solid var(--line); border-radius:10px;
+    padding:12px 14px; margin:14px 0; font-size:0.95rem;
+  }
+  .callout.warn{border-color:#E7C989; background:#FDF7EA;}
+  .callout strong{display:block; margin-bottom:2px;}
+
+  .btn-row{display:flex; gap:10px; flex-wrap:wrap; margin:14px 0;}
+  .btn{
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--forest); color:#fff; text-decoration:none;
+    font-weight:600; font-size:0.9rem; padding:11px 16px; border-radius:9px;
+    min-height:44px;
+  }
+  .btn:hover{background:var(--forest-2);}
+  .btn.primary{background:var(--spring); color:var(--forest);}
+  .btn.primary:hover{background:#00CE58;}
+
+  table.price{width:100%; border-collapse:collapse; margin:14px 0; font-size:0.92rem;}
+  table.price th, table.price td{text-align:left; padding:9px 10px; border-bottom:1px solid var(--line);}
+  table.price th{color:var(--muted); font-weight:600;}
+
+  .schedule-item{display:flex; gap:14px; padding:10px 0; border-bottom:1px solid var(--line);}
+  .schedule-item:last-child{border-bottom:none;}
+  .schedule-time{
+    flex:none; width:64px; font-family:'Space Grotesk',sans-serif; font-weight:700;
+    color:var(--spring-deep); font-variant-numeric:tabular-nums; font-size:0.92rem; padding-top:2px;
+  }
+  .schedule-text strong{display:block;}
+
+  .guest-org{margin:0 0 12px;}
+  .guest-org h4{margin:0 0 4px; font-size:0.98rem; font-family:'IBM Plex Sans',sans-serif; font-weight:600;}
+  .guest-org p{margin:0; color:var(--muted); font-size:0.92rem;}
+
+  footer.contact{
+    max-width:var(--maxw); margin:36px auto 0; padding:0 20px 40px;
+  }
+  .contact-card{
+    background:var(--forest); color:#fff; border-radius:var(--radius);
+    padding:22px 20px;
+  }
+  .contact-card h2{color:#fff; font-size:1.15rem; margin-bottom:4px;}
+  .contact-card p.role{color:#9FB4B8; margin:0 0 16px; font-size:0.9rem;}
+  .contact-links{display:flex; flex-direction:column; gap:10px;}
+  .contact-links a{
+    display:flex; align-items:center; gap:10px; color:#fff; text-decoration:none;
+    background:rgba(255,255,255,0.08); padding:12px 14px; border-radius:9px; font-size:0.92rem;
+    min-height:44px;
+  }
+  .contact-links a:hover{background:rgba(255,255,255,0.16);}
+  .contact-links svg{width:18px;height:18px; flex:none; color:var(--spring);}
+
+  .fine{color:var(--muted); font-size:0.82rem; margin-top:14px;}
+
+  #toast{
+    position:fixed; left:50%; bottom:24px; transform:translateX(-50%) translateY(20px);
+    background:var(--forest); color:#fff; padding:10px 18px; border-radius:9px;
+    font-size:0.88rem; opacity:0; pointer-events:none; transition:opacity 0.2s ease, transform 0.2s ease;
+    z-index:80;
+  }
+  #toast.show{opacity:1; transform:translateX(-50%) translateY(0);}
+
+  [hidden]{display:none !important;}
+
+  @media (min-width:640px){
+    .body{padding-left:56px;}
+  }
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site">
+  <div class="bar">
+    <a class="wordmark" href="#top">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C9 6 6 10.5 6 14.5 6 18.6 8.7 21.4 12 22c3.3-.6 6-3.4 6-7.5C18 10.5 15 6 12 2Z" fill="#00ED64"/><path d="M12 22V13" stroke="#001E2B" stroke-width="1.4" stroke-linecap="round"/></svg>
+      <span>MongoDB</span>
+    </a>
+    <div class="lang-group" role="group" aria-label="Language / Idioma">
+      <button type="button" class="lang-btn" id="btn-lang-en" aria-pressed="true" onclick="setLanguage('en')">EN</button>
+      <button type="button" class="lang-btn" id="btn-lang-es" aria-pressed="false" onclick="setLanguage('es')">ES</button>
+    </div>
+  </div>
+
+  <!-- English chip nav -->
+  <nav class="jump lang-block" data-lang="en" aria-label="Jump to section">
+    <a href="#en-glance">At a glance</a>
+    <a href="#en-tickets">Tickets &amp; access</a>
+    <a href="#en-location">Map &amp; location</a>
+    <a href="#en-getting-there">Getting there</a>
+    <a href="#en-access">Luggage &amp; dietary</a>
+    <a href="#en-guests">Guests</a>
+    <a href="#en-contact">Contact</a>
+  </nav>
+  <!-- Spanish chip nav -->
+  <nav class="jump lang-block" data-lang="es" hidden aria-label="Ir a la sección">
+    <a href="#es-glance">Información clave</a>
+    <a href="#es-tickets">Entradas y acceso</a>
+    <a href="#es-location">Mapa y ubicación</a>
+    <a href="#es-getting-there">Cómo llegar</a>
+    <a href="#es-experience">Su experiencia</a>
+    <a href="#es-itinerary">Itinerario</a>
+    <a href="#es-access">Equipaje</a>
+    <a href="#es-guests">Invitados</a>
+    <a href="#es-contact">Contacto</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-inner lang-block" data-lang="en" id="top">
+    <h1>Know before you go.</h1>
+    <p class="lede">Your guide to MongoDB's executive experience at the Formula&nbsp;1 Grand&nbsp;Prix Madrid.</p>
+    <div class="date-block">
+      <div class="date-digits">12–13</div>
+      <div class="date-meta"><strong>September 2026</strong>Ignition Club · MADRING, Madrid</div>
+    </div>
+  </div>
+  <div class="hero-inner lang-block" data-lang="es" hidden>
+    <h1>Antes de viajar.</h1>
+    <p class="lede">Su guía para la experiencia ejecutiva de MongoDB en el Gran Premio de Fórmula&nbsp;1 de Madrid.</p>
+    <div class="date-block">
+      <div class="date-digits">12–13</div>
+      <div class="date-meta"><strong>Septiembre 2026</strong>Ignition Club · MADRING, Madrid</div>
+    </div>
+  </div>
+</div>
+
+<main id="main">
+
+  <!-- ================= ENGLISH ================= -->
+  <div class="lang-block" data-lang="en">
+
+    <div class="toolbar">
+      <p>Tap any section to expand it, or copy a direct link to share by email.</p>
+      <button class="toggle-all" data-scope="en" onclick="toggleAll('en')">Expand all</button>
+    </div>
+
+    <details class="card" id="en-glance" open>
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">At a glance<small>Dates, hours, venue, dress code</small></span>
+        <button type="button" class="copy-btn" aria-label="Copy link to At a glance" onclick="copyLink('en-glance')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Dates</dt><dd>Saturday, September 12 &amp; Sunday, September 13, 2026</dd>
+          <dt>Hospitality hours</dt><dd>09:00–19:00 each day, local Madrid time</dd>
+          <dt>Venue</dt><dd>Ignition Club, Turns 13 &amp; 14, MADRING · Grandstand HD3 · Access E · Gate E3</dd>
+          <dt>Address</dt><dd>Av. del Partenón, Barajas, 28042 Madrid, Spain</dd>
+          <dt>Dress code</dt><dd>Casual</dd>
+        </dl>
+        <div class="btn-row">
+          <a class="btn" href="https://www.madring.com/mapa-servicios">Official MADRING map</a>
+          <a class="btn" href="https://hospitality.madring.com/en/f1/ignition-club/">About the Ignition Club</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="en-tickets">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Tickets and access<small>MADRING app, QR codes, wristbands</small></span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Tickets and access" onclick="copyLink('en-tickets')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Your ticket is digital and must be accessed through the official MADRING app. Before travelling:</p>
+        <ol>
+          <li>Download the app.</li>
+          <li>Sign in using the same email address associated with your Official Hospitality account.</li>
+          <li>Download your tickets in advance. If they don't appear immediately, they'll be available shortly.</li>
+          <li>Present the live, dynamic QR code in the app at the entrance.</li>
+        </ol>
+        <div class="callout warn">
+          <strong>Printed tickets and screenshots aren't accepted.</strong>
+          Mobile coverage around the circuit may be limited, so download your tickets before arrival.
+        </div>
+        <div class="btn-row">
+          <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57gLbJwd1-gohhLtlrd7uQwej8OHqGSSRnzX2f96SvKAn2alngAEQxGeGMoZnv8jdViG2rRmhYnPwKfZLgQfr6kNJOaz9gVnG4">Get it on Google Play</a>
+          <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57hYnMAzgyDJYDGBb99Sfrq0eXWCm5lRZtPQEfgeTbXT8fmBVM7WJXhfuBsN-0cWiUvCS1av0rz1NXCRwQphnvz1L6V6S34A0s">Download on the App Store</a>
+        </div>
+        <p><strong>Wristbands</strong> can be collected in advance September 4–10, 12:00–21:00, at El Corte Inglés (Castellana, Princesa, Serrano or Preciados). If you can't collect yours beforehand, it's also available at the circuit entrances. Where possible, collect your own wristband in advance for the smoothest arrival.</p>
+        <div class="callout">
+          <strong>Where to meet MongoDB</strong>
+          The MongoDB team will meet you at the MongoDB table inside the Ignition Club, not at the entrance.
+        </div>
+        <p class="fine">By registering, the person completing registration confirms they've obtained all internal authorizations, corporate approvals and compliance clearances required by their company to accept the invitation and attend.</p>
+      </div>
+    </details>
+
+    <details class="card" id="en-location">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Circuit map &amp; MongoDB location<small>Access E, Gate E3</small></span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Circuit map and MongoDB location" onclick="copyLink('en-location')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>The Ignition Club is in the MADRING North area. Follow signs to <strong>Access E</strong> and <strong>Gate E3</strong> — MATCH Hospitality staff will direct you the rest of the way.</p>
+        <div class="callout">
+          <strong>Where to find the MongoDB hosts</strong>
+          Our team will be at the reserved MongoDB table inside the Ignition Club. Once inside, follow the hospitality signage or ask MATCH Hospitality staff to point you there.
+        </div>
+        <div class="callout warn">
+          <strong>Re-entry isn't permitted</strong>
+          A valid ticket is required for entry, and ID or proof of age may be requested. Once your ticket is scanned, you can't leave and come back.
+        </div>
+        <p>MADRING has two independent areas — <strong>MADRING North</strong> (our access area) and <strong>MADRING South</strong> — with no connection between them inside the circuit. Check the official map in advance and follow the access point shown on your ticket.</p>
+        <div class="btn-row">
+          <a class="btn" href="https://www.madring.com/en/map-facilities">Official MADRING map</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="en-getting-there">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Getting to the circuit<small>Taxi/VTC, private car &amp; parking</small></span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Getting to the circuit" onclick="copyLink('en-getting-there')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <h3 style="font-size:1rem;margin-bottom:6px;">Taxi / VTC — recommended</h3>
+        <p>Use the designated taxi and VTC drop-off area — the most convenient and flexible option. MATCH Hospitality staff will direct you from there to the Ignition Club and our MongoDB table.</p>
+        <dl class="facts">
+          <dt>VTC point</dt><dd>Avenida José Antonio Corrales, between Juan Antonio Samaranch and Manuel Fraga Iribarne (MADRING North)</dd>
+          <dt>Tell your driver</dt><dd>MADRING — taxi/VTC area, Avda. del Partenón, 5, 28042 Madrid</dd>
+        </dl>
+        <p>From the North VTC point, follow signs to Access E and Gate E3, and allow extra time for the walk in.</p>
+        <h3 style="font-size:1rem;margin:18px 0 6px;">Private car</h3>
+        <p>Private vehicles can't access the circuit directly. If you'd rather drive, reserve a parking space in advance at the Riyadh Air Metropolitano Stadium, connected to MADRING by shuttle. Spaces are limited and admission is charged per vehicle.</p>
+        <div class="callout">Please send your vehicle information directly to Maria Alcázar — see <a href="#en-contact">Contact</a>.</div>
+        <div class="btn-row">
+          <a class="btn" href="https://maps.app.goo.gl/mkwZJiJw7CjnhhiA8N">Stadium parking on Google Maps</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="en-access">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Luggage &amp; dietary needs<small>Lockers, storage, allergies</small></span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Luggage and dietary needs" onclick="copyLink('en-access')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Lockers are available, subject to capacity, at <strong>North Storage, Valdebebas Transport Hub</strong>:</p>
+        <table class="price">
+          <thead><tr><th>Item</th><th>Price</th></tr></thead>
+          <tbody>
+            <tr><td>Cabin bag / medium-sized item</td><td>€15</td></tr>
+            <tr><td>Medium suitcase / large item</td><td>€20</td></tr>
+            <tr><td>Coat rack</td><td>€4</td></tr>
+          </tbody>
+        </table>
+        <p>Please let us know in advance about any allergies or dietary restrictions — see <a href="#en-contact">Contact</a>.</p>
+      </div>
+    </details>
+
+    <details class="card" id="en-guests">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Guests &amp; MongoDB hosts</span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Guests and MongoDB hosts" onclick="copyLink('en-guests')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>You'll join a small group of C-level and senior technology decision-makers from priority organizations including Telefónica, Banco Santander/Getnet, Mapfre and Namirial.</p>
+      </div>
+    </details>
+
+    <details class="card" id="en-contact">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Questions before you travel?</span>
+        <button type="button" class="copy-btn" aria-label="Copy link to Contact" onclick="copyLink('en-contact')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Contact Maria Alcázar directly — see the card below.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- ================= SPANISH ================= -->
+  <div class="lang-block" data-lang="es" hidden>
+
+    <div class="toolbar">
+      <p>Toque cualquier sección para desplegarla, o copie un enlace directo para compartir por correo.</p>
+      <button class="toggle-all" data-scope="es" onclick="toggleAll('es')">Desplegar todo</button>
+    </div>
+
+    <details class="card" id="es-glance" open>
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Información clave<small>Fechas, horario, lugar, vestimenta</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Información clave" onclick="copyLink('es-glance')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <dl class="facts">
+          <dt>Fechas</dt><dd>Sábado 12 y domingo 13 de septiembre de 2026</dd>
+          <dt>Horario del hospitality</dt><dd>De 09:00 a 19:00 cada día, hora local de Madrid</dd>
+          <dt>Lugar</dt><dd>Ignition Club, curvas 13 y 14, MADRING · Grada HD3 · Acceso E · Puerta E3</dd>
+          <dt>Dirección</dt><dd>Av. del Partenón, Barajas, 28042 Madrid, España</dd>
+          <dt>Código de vestimenta</dt><dd>Casual</dd>
+        </dl>
+        <div class="btn-row">
+          <a class="btn" href="https://www.madring.com/en/map-facilities">Mapa oficial de MADRING</a>
+          <a class="btn" href="https://hospitality.madring.com/en/f1/ignition-club/">Más sobre el Ignition Club</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="es-tickets">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Entradas y acceso<small>App MADRING, código QR, pulseras</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Entradas y acceso" onclick="copyLink('es-tickets')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Su entrada es digital y deberá acceder a ella a través de la aplicación oficial MADRING. Antes de viajar:</p>
+        <ol>
+          <li>Descargue la aplicación.</li>
+          <li>Inicie sesión con el correo asociado a su cuenta de Official Hospitality.</li>
+          <li>Descargue sus entradas con antelación. Si no aparecen de inmediato, estarán disponibles en breve.</li>
+          <li>Muestre en la entrada el código QR dinámico directamente desde la aplicación.</li>
+        </ol>
+        <div class="callout warn">
+          <strong>No se aceptan entradas impresas ni capturas de pantalla.</strong>
+          La cobertura móvil cerca del circuito puede ser limitada: descargue sus entradas antes de llegar.
+        </div>
+        <div class="btn-row">
+          <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57gLbJwd1-gohhLtlrd7uQwej8OHqGSSRnzX2f96SvKAn2alngAEQxGeGMoZnv8jdViG2rRmhYnPwKfZLgQfr6kNJOaz9gVnG4">Descargar en Google Play</a>
+          <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57hYnMAzgyDJYDGBb99Sfrq0eXWCm5lRZtPQEfgeTbXT8fmBVM7WJXhfuBsN-0cWiUvCS1av0rz1NXCRwQphnvz1L6V6S34A0s">Descargar en App Store</a>
+        </div>
+        <p>Las <strong>pulseras</strong> se pueden recoger del 4 al 10 de septiembre, de 12:00 a 21:00, en El Corte Inglés (Castellana, Princesa, Serrano o Preciados). Si no puede recogerla con antelación, también estará disponible en las entradas del circuito.</p>
+        <div class="callout">
+          <strong>Dónde encontrar a MongoDB</strong>
+          El equipo de MongoDB le esperará en la mesa reservada dentro del Ignition Club, no en la entrada.
+        </div>
+        <p class="fine">La persona que complete el registro declara contar con las autorizaciones internas, aprobaciones corporativas y validaciones de cumplimiento necesarias de su empresa para participar.</p>
+      </div>
+    </details>
+
+    <details class="card" id="es-location">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Mapa del circuito y ubicación<small>Acceso E, Puerta E3</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Mapa del circuito" onclick="copyLink('es-location')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>El Ignition Club está en la zona MADRING Norte. Siga las indicaciones hacia <strong>Acceso E</strong> y <strong>Puerta E3</strong>; el personal de MATCH Hospitality le orientará hasta el recinto.</p>
+        <div class="callout">
+          <strong>Dónde encontrar a los anfitriones</strong>
+          Nuestro equipo estará en la mesa reservada de MongoDB dentro del Ignition Club, no en la entrada del circuito.
+        </div>
+        <div class="callout warn">
+          <strong>No se permite volver a entrar</strong>
+          Es imprescindible una entrada válida; puede solicitarse documento de identidad o prueba de edad. Una vez validada la entrada, no se permite el reingreso.
+        </div>
+        <p>MADRING está dividido en dos zonas independientes — <strong>MADRING Norte</strong> (nuestro acceso) y <strong>MADRING Sur</strong> — sin conexión entre ellas desde dentro del circuito.</p>
+        <div class="btn-row">
+          <a class="btn" href="https://www.madring.com/en/map-facilities">Mapa oficial de MADRING</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="es-getting-there">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Cómo llegar al circuito<small>Taxi/VTC, vehículo privado</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Cómo llegar" onclick="copyLink('es-getting-there')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <h3 style="font-size:1rem;margin-bottom:6px;">Taxi / VTC — opción recomendada</h3>
+        <p>Utilice la zona habilitada para taxi y VTC. Es la opción más cómoda y flexible; el personal de MATCH Hospitality le indicará cómo llegar al Ignition Club y a nuestra mesa.</p>
+        <dl class="facts">
+          <dt>Punto VTC</dt><dd>Avenida José Antonio Corrales, entre Juan Antonio Samaranch y Manuel Fraga Iribarne (MADRING Norte)</dd>
+          <dt>Destino para el conductor</dt><dd>MADRING — zona de taxi/VTC, Avda. del Partenón, 5, 28042 Madrid</dd>
+        </dl>
+        <p>Desde el punto VTC Norte, siga la señalización hacia Acceso E y Puerta E3, y prevea tiempo adicional para el recorrido a pie.</p>
+        <h3 style="font-size:1rem;margin:18px 0 6px;">Vehículo privado</h3>
+        <p>No se permite el acceso directo al circuito en vehículo privado. El parking oficial está en el Estadio Riyadh Air Metropolitano, conectado con MADRING mediante lanzaderas. Plazas limitadas; la admisión se cobra por vehículo.</p>
+        <div class="callout">Envíe la información de su vehículo directamente a Maria Alcázar — vea <a href="#es-contact">Contacto</a>.</div>
+        <div class="btn-row">
+          <a class="btn" href="https://maps.app.goo.gl/mkwZJiJw7CjnhhiA8N">Parking del estadio en Google Maps</a>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="es-experience">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Su experiencia MongoDB<small>Qué incluye el Ignition Club</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Su experiencia MongoDB" onclick="copyLink('es-experience')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <ul>
+          <li>Vistas privilegiadas desde la grada, la terraza y las zonas trackside sobre las curvas 13 y 14, una zona clave de adelantamientos</li>
+          <li>Sesiones de DJ en directo, simuladores de carreras y pantallas interactivas</li>
+          <li>Entrevistas, análisis y comentarios en directo de expertos del motor y antiguos pilotos de F1</li>
+          <li>Servicio de restauración todo el día, cocina española e internacional, desde el desayuno hasta los aperitivos de la tarde</li>
+          <li>Bebidas de primera categoría, incluyendo Moët &amp; Chandon, destilados, cerveza y vino</li>
+          <li>Pantallas gigantes en el recinto para seguir la carrera desde la zona de hospitality</li>
+        </ul>
+      </div>
+    </details>
+
+    <details class="card" id="es-itinerary">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Itinerario<small>Sábado y domingo</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Itinerario" onclick="copyLink('es-itinerary')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <h3 style="font-size:1rem;margin-bottom:2px;">Sábado 12 de septiembre</h3>
+        <div class="schedule-item"><div class="schedule-time">09:30</div><div class="schedule-text"><strong>Llegada</strong>Encuentro con el equipo de MongoDB en nuestra mesa</div></div>
+        <div class="schedule-item"><div class="schedule-time">12:30</div><div class="schedule-text"><strong>En pista</strong>Práctica 3</div></div>
+        <div class="schedule-item"><div class="schedule-time">13:45</div><div class="schedule-text"><strong>Conversación ejecutiva</strong>«Why MongoDB for AI»</div></div>
+        <div class="schedule-item"><div class="schedule-time">14:00</div><div class="schedule-text"><strong>Almuerzo</strong>Networking ejecutivo</div></div>
+        <div class="schedule-item"><div class="schedule-time">15:00</div><div class="schedule-text"><strong>Carrera</strong>Seguimiento, networking y conversación con los anfitriones</div></div>
+        <div class="schedule-item"><div class="schedule-time">16:00</div><div class="schedule-text"><strong>En pista</strong>Clasificación</div></div>
+        <div class="schedule-item"><div class="schedule-time">19:00</div><div class="schedule-text"><strong>Cierre</strong></div></div>
+        <h3 style="font-size:1rem;margin:20px 0 2px;">Domingo 13 de septiembre</h3>
+        <div class="schedule-item"><div class="schedule-time">09:30</div><div class="schedule-text"><strong>Llegada</strong>Encuentro con el equipo de MongoDB en nuestra mesa</div></div>
+        <div class="schedule-item"><div class="schedule-time">13:45</div><div class="schedule-text"><strong>Conversación ejecutiva</strong>«Why MongoDB for AI»</div></div>
+        <div class="schedule-item"><div class="schedule-time">14:00</div><div class="schedule-text"><strong>Almuerzo</strong>Networking ejecutivo</div></div>
+        <div class="schedule-item"><div class="schedule-time">15:00</div><div class="schedule-text"><strong>Carrera final de F1</strong>Seguimiento, networking y conversación con los anfitriones</div></div>
+        <div class="schedule-item"><div class="schedule-time">16:00</div><div class="schedule-text"><strong>En pista</strong>Clasificación</div></div>
+        <div class="schedule-item"><div class="schedule-time">19:00</div><div class="schedule-text"><strong>Cierre</strong></div></div>
+      </div>
+    </details>
+
+    <details class="card" id="es-access">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Equipaje y necesidades alimentarias<small>Consignas y alergias</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Equipaje" onclick="copyLink('es-access')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Hay consignas disponibles, sujetas a capacidad, en la <strong>Consigna Norte, Intercambiador de Valdebebas</strong>:</p>
+        <table class="price">
+          <thead><tr><th>Objeto</th><th>Precio</th></tr></thead>
+          <tbody>
+            <tr><td>Maleta de cabina / objeto mediano</td><td>15 €</td></tr>
+            <tr><td>Maleta mediana / objeto grande</td><td>20 €</td></tr>
+            <tr><td>Perchero</td><td>4 €</td></tr>
+          </tbody>
+        </table>
+        <p>Le rogamos que nos informe con antelación de cualquier alergia o restricción alimentaria — vea <a href="#es-contact">Contacto</a>.</p>
+      </div>
+    </details>
+
+    <details class="card" id="es-guests">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">Invitados y anfitriones<small>Quién estará en el evento</small></span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Invitados y anfitriones" onclick="copyLink('es-guests')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Compartirá la experiencia con un grupo reducido de responsables de nivel C y altos directivos tecnológicos de organizaciones prioritarias, entre ellas Telefónica, Banco Santander/Getnet, Mapfre y Namirial.</p>
+        <div class="guest-org">
+          <h4>Namirial</h4>
+          <p>Davide Coletto, CTO</p>
+        </div>
+        <div class="guest-org">
+          <h4>Telefónica</h4>
+          <p>Álvaro Sánchez Apellániz, Director de Data &amp; AI / CDO; Luis Felipe Coco Pérez, Director de Infraestructura y Virtualización; Juan José Marfil, Head of IT; Guillermo Gavilán Montenegro; Felipe Eduardo Reyes</p>
+        </div>
+        <div class="guest-org">
+          <h4>Banco Santander / Getnet</h4>
+          <p>Fernando Muñoz Costi, Head of Engineering Excellence; Pablo Malvar, VP Director T&amp;O; Jorge Martínez Cea, Head of T&amp;O, Getnet Payments</p>
+        </div>
+        <div class="guest-org">
+          <h4>Mapfre</h4>
+          <p>Malu Delicado Escudero, CIO de Mapfre Tech; Paloma Doñamayor Fernández, Head of Applications; Raúl Prieto García, COO de Tecnología / CIO de Mapfre Salud</p>
+        </div>
+        <div class="guest-org">
+          <h4>Equipo MongoDB</h4>
+          <p>Ryan Mac Ban, Chief Revenue Officer; Andrés Marín, Regional Vice President Iberia; Federico De Francesco, Regional Vice President Italy; Maria Alcázar, Strategic Marketing y responsable del evento. Maria estará presente el sábado; Ryan, Andrés y Federico ambos días.</p>
+        </div>
+      </div>
+    </details>
+
+    <details class="card" id="es-contact">
+      <summary class="head">
+        <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <span class="title">¿Preguntas antes de viajar?</span>
+        <button type="button" class="copy-btn" aria-label="Copiar enlace a Contacto" onclick="copyLink('es-contact')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
+      </summary>
+      <div class="body">
+        <p>Póngase en contacto con Maria Alcázar directamente — vea la tarjeta a continuación.</p>
+      </div>
+    </details>
+  </div>
+
+</main>
+
+<footer class="contact">
+  <div class="contact-card">
+    <h2>Maria Alcázar</h2>
+    <p class="role">Strategic Marketing, MongoDB</p>
+    <div class="contact-links">
+      <a href="mailto:maria.alcazar@mongodb.com">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16v12H4z" stroke="currentColor" stroke-width="1.8"/><path d="M4 7l8 6 8-6" stroke="currentColor" stroke-width="1.8"/></svg>
+        maria.alcazar@mongodb.com
+      </a>
+      <a href="https://wa.me/34679167337">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3a9 9 0 00-7.8 13.5L3 21l4.6-1.2A9 9 0 1012 3z" stroke="currentColor" stroke-width="1.8"/></svg>
+        WhatsApp +34 679 167 337
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  function setLanguage(lang, updateHash){
+    document.querySelectorAll('.lang-block').forEach(function(el){
+      el.hidden = el.dataset.lang !== lang;
+    });
+    document.getElementById('btn-lang-en').setAttribute('aria-pressed', lang === 'en');
+    document.getElementById('btn-lang-es').setAttribute('aria-pressed', lang === 'es');
+    document.documentElement.lang = lang;
+  }
+
+  function toggleAll(scope){
+    var btn = document.querySelector('.toggle-all[data-scope="' + scope + '"]');
+    var container = document.querySelector('.lang-block[data-lang="' + scope + '"]:not(nav):not(.hero-inner)');
+    var detailsList = document.querySelectorAll('main .lang-block[data-lang="' + scope + '"] details.card');
+    var opening = btn.textContent.indexOf('Expand') === 0 || btn.textContent.indexOf('Desplegar') === 0;
+    detailsList.forEach(function(d){ d.open = opening; });
+    if(scope === 'en'){ btn.textContent = opening ? 'Collapse all' : 'Expand all'; }
+    else { btn.textContent = opening ? 'Contraer todo' : 'Desplegar todo'; }
+  }
+
+  function copyLink(id){
+    var url = location.origin + location.pathname + '#' + id;
+    var done = function(){ showToast(document.documentElement.lang === 'es' ? 'Enlace copiado' : 'Link copied'); };
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(url).then(done).catch(function(){ fallbackCopy(url, done); });
+    } else {
+      fallbackCopy(url, done);
+    }
+  }
+
+  function fallbackCopy(text, done){
+    var input = document.createElement('textarea');
+    input.value = text;
+    input.style.position = 'fixed';
+    input.style.opacity = '0';
+    document.body.appendChild(input);
+    input.select();
+    try { document.execCommand('copy'); done(); } catch(e){}
+    document.body.removeChild(input);
+  }
+
+  var toastTimer;
+  function showToast(msg){
+    var toast = document.getElementById('toast');
+    toast.textContent = msg;
+    toast.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function(){ toast.classList.remove('show'); }, 2200);
+  }
+
+  function initFromHash(){
+    var hash = decodeURIComponent(location.hash.replace('#',''));
+    if(!hash) return;
+    var lang = hash.indexOf('es-') === 0 ? 'es' : 'en';
+    setLanguage(lang);
+    var el = document.getElementById(hash);
+    if(el){
+      if(el.tagName === 'DETAILS'){ el.open = true; }
+      requestAnimationFrame(function(){
+        el.scrollIntoView({behavior: 'smooth', block: 'start'});
+      });
+      el.classList.add('flash');
+      setTimeout(function(){ el.classList.remove('flash'); }, 1600);
+    }
+  }
+
+  window.addEventListener('hashchange', initFromHash);
+  document.addEventListener('DOMContentLoaded', initFromHash);
+</script>
+
+</body>
+</html>
