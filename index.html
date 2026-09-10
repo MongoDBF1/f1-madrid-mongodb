@@ -39,7 +39,7 @@
     --font-mono:'Source Code Pro', ui-monospace, monospace;
   }
   *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
+  html{scroll-behavior:smooth; font-size:15px;}
   @media (prefers-reduced-motion: reduce){
     html{scroll-behavior:auto;}
     *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;}
@@ -370,7 +370,7 @@
     <details class="card" id="en-tickets">
       <summary class="head">
         <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="title">Tickets and access<small>MADRING app, QR codes, wristbands</small></span>
+        <span class="title">Tickets and access<small>MADRING app, QR codes</small></span>
         <button type="button" class="copy-btn" aria-label="Copy link to Tickets and access" onclick="copyLink('en-tickets')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </summary>
       <div class="body">
@@ -393,12 +393,6 @@
           <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57gLbJwd1-gohhLtlrd7uQwej8OHqGSSRnzX2f96SvKAn2alngAEQxGeGMoZnv8jdViG2rRmhYnPwKfZLgQfr6kNJOaz9gVnG4">Get it on Google Play</a>
           <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57hYnMAzgyDJYDGBb99Sfrq0eXWCm5lRZtPQEfgeTbXT8fmBVM7WJXhfuBsN-0cWiUvCS1av0rz1NXCRwQphnvz1L6V6S34A0s">Download on the App Store</a>
         </div>
-        <p><strong>Wristbands</strong> can be collected either at the circuit or in advance, whichever suits you:</p>
-        <ul>
-          <li><strong>In advance:</strong> September 4–10, 12:00–21:00, at El Corte Inglés (Castellana, Princesa, Serrano or Preciados)</li>
-          <li><strong>At the circuit:</strong> available at the entrances on the day</li>
-        </ul>
-        <p>Collecting in advance means a smoother arrival, but either option works.</p>
         <div class="callout">
           <strong>Where to meet MongoDB</strong>
           The MongoDB team will meet you at the MongoDB table inside the Ignition Club, not at the entrance.
@@ -435,7 +429,7 @@
     <details class="card" id="en-getting-there">
       <summary class="head">
         <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="title">Getting to the circuit<small>Taxi/VTC, private car &amp; parking</small></span>
+        <span class="title">Getting to the circuit<small>Taxi/VTC, public transport, private car &amp; parking</small></span>
         <button type="button" class="copy-btn" aria-label="Copy link to Getting to the circuit" onclick="copyLink('en-getting-there')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </summary>
       <div class="body">
@@ -449,9 +443,19 @@
         <div class="btn-row">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Avenida+Jos%C3%A9+Antonio+Corrales+Madrid">VTC point on Google Maps</a>
         </div>
+        <h3 style="font-size:1rem;margin:18px 0 6px;">Public transportation</h3>
+        <p>The closest options to our access point (Access E, MADRING North) are:</p>
+        <ul>
+          <li><strong>Cercanías train:</strong> Valdebebas station, line C-1</li>
+          <li><strong>Metro:</strong> San Lorenzo or Mar de Cristal, line 4</li>
+        </ul>
+        <p>Both require a short walk to reach the circuit; follow signs toward Access E once you arrive.</p>
         <h3 style="font-size:1rem;margin:18px 0 6px;">Private car</h3>
         <p>Private vehicles can't access the circuit directly. If you'd rather drive, reserve a parking space in advance at the Riyadh Air Metropolitano Stadium, connected to MADRING by shuttle. Spaces are limited and admission is charged per vehicle.</p>
-        <div class="callout">Please send your vehicle information directly to Maria Alcázar, see <a href="#en-contact">Contact</a>.</div>
+        <div class="callout warn">
+          <strong>We don't recommend this option</strong>
+          Your parking pass isn't digital: you need to physically pick up a paper pass at a hotel about 10 minutes from the circuit before you can park. Given the extra stop this requires, we'd suggest taxi/VTC instead.
+        </div>
         <div class="btn-row">
           <a class="btn" href="https://maps.app.goo.gl/mkwZJiJw7CjnhhiA8N">Stadium parking on Google Maps</a>
         </div>
@@ -585,7 +589,7 @@
     <details class="card" id="es-tickets">
       <summary class="head">
         <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="title">Entradas y acceso<small>App MADRING, código QR, pulseras</small></span>
+        <span class="title">Entradas y acceso<small>App MADRING, código QR</small></span>
         <button type="button" class="copy-btn" aria-label="Copiar enlace a Entradas y acceso" onclick="copyLink('es-tickets')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </summary>
       <div class="body">
@@ -608,12 +612,6 @@
           <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57gLbJwd1-gohhLtlrd7uQwej8OHqGSSRnzX2f96SvKAn2alngAEQxGeGMoZnv8jdViG2rRmhYnPwKfZLgQfr6kNJOaz9gVnG4">Descargar en Google Play</a>
           <a class="btn primary" href="https://click.m.match-events.com/?qs=ABB7InYiOjEsImQiOjQ5ODl9ADIAAAAAAbhAZ57hYnMAzgyDJYDGBb99Sfrq0eXWCm5lRZtPQEfgeTbXT8fmBVM7WJXhfuBsN-0cWiUvCS1av0rz1NXCRwQphnvz1L6V6S34A0s">Descargar en App Store</a>
         </div>
-        <p>Las <strong>pulseras</strong> se pueden recoger en el circuito o con antelación, como prefiera:</p>
-        <ul>
-          <li><strong>Con antelación:</strong> del 4 al 10 de septiembre, de 12:00 a 21:00, en El Corte Inglés (Castellana, Princesa, Serrano o Preciados)</li>
-          <li><strong>En el circuito:</strong> disponible en las entradas el día del evento</li>
-        </ul>
-        <p>Recogerla con antelación facilita una llegada más tranquila, pero ambas opciones son igual de válidas.</p>
         <div class="callout">
           <strong>Dónde encontrar a MongoDB</strong>
           El equipo de MongoDB le esperará en la mesa reservada dentro del Ignition Club, no en la entrada.
@@ -650,7 +648,7 @@
     <details class="card" id="es-getting-there">
       <summary class="head">
         <svg class="chevron" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-        <span class="title">Cómo llegar al circuito<small>Taxi/VTC, vehículo privado</small></span>
+        <span class="title">Cómo llegar al circuito<small>Taxi/VTC, transporte público, vehículo privado</small></span>
         <button type="button" class="copy-btn" aria-label="Copiar enlace a Cómo llegar" onclick="copyLink('es-getting-there')"><svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M10 13a5 5 0 007 0l2-2a5 5 0 00-7-7l-1 1M14 11a5 5 0 00-7 0l-2 2a5 5 0 007 7l1-1" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></button>
       </summary>
       <div class="body">
@@ -664,9 +662,19 @@
         <div class="btn-row">
           <a class="btn" href="https://www.google.com/maps/search/?api=1&query=Avenida+Jos%C3%A9+Antonio+Corrales+Madrid">Punto VTC en Google Maps</a>
         </div>
+        <h3 style="font-size:1rem;margin:18px 0 6px;">Transporte público</h3>
+        <p>Las opciones más cercanas a nuestro acceso (Acceso E, MADRING Norte) son:</p>
+        <ul>
+          <li><strong>Cercanías:</strong> estación de Valdebebas, línea C-1</li>
+          <li><strong>Metro:</strong> San Lorenzo o Mar de Cristal, línea 4</li>
+        </ul>
+        <p>Ambas opciones requieren un breve paseo hasta el circuito; siga la señalización hacia el Acceso E al llegar.</p>
         <h3 style="font-size:1rem;margin:18px 0 6px;">Vehículo privado</h3>
         <p>No se permite el acceso directo al circuito en vehículo privado. El parking oficial está en el Estadio Riyadh Air Metropolitano, conectado con MADRING mediante lanzaderas. Plazas limitadas; la admisión se cobra por vehículo.</p>
-        <div class="callout">Envíe la información de su vehículo directamente a Maria Alcázar, vea <a href="#es-contact">Contacto</a>.</div>
+        <div class="callout warn">
+          <strong>No recomendamos esta opción</strong>
+          El pase de aparcamiento no es digital: hay que recogerlo físicamente en papel en un hotel a unos 10 minutos del circuito antes de poder aparcar. Por esta parada adicional, recomendamos usar taxi/VTC en su lugar.
+        </div>
         <div class="btn-row">
           <a class="btn" href="https://maps.app.goo.gl/mkwZJiJw7CjnhhiA8N">Parking del estadio en Google Maps</a>
         </div>
